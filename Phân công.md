@@ -44,7 +44,15 @@ tetris-cpp/
 ```
 
 ---
-
+## Tóm tắt nhiệm vụ
+| Thành viên | Module phụ trách | Files chính | Nội dung công việc chính | Ưu tiên |
+|---|---|---|---|---|
+| TV1 | Game Board & Grid Logic | `Board.h`, `Board.cpp`, `test_board.cpp` | Xây dựng lưới game 10x20, kiểm tra vị trí hợp lệ, cố định khối, xóa hàng, kiểm tra game over và reset board | Hoàn thành interface `Board.h` sớm nhất trong tuần 1 |
+| TV2 | Tetromino & Movement | `Tetromino.h`, `Tetromino.cpp`, `test_tetromino.cpp` | Tạo 7 loại khối Tetromino, xử lý di chuyển, xoay, hard drop, ghost piece và sinh khối ngẫu nhiên | Hoàn thành `Tetromino.h` trong tuần 1 |
+| TV3 | Rendering & UI | `Renderer.h`, `Renderer.cpp`, `assets/fonts/` | Xây dựng phần hiển thị game, gồm board, khối đang rơi, ghost piece, HUD, menu, pause và game over screen | Chọn thư viện render và dựng render cơ bản trong tuần 1–2 |
+| TV4 | Game Loop, Scoring & Tích hợp | `GameLoop.h`, `GameLoop.cpp`, `ScoreManager.h`, `ScoreManager.cpp`, `main.cpp`, `test_score.cpp` | Điều phối vòng lặp game, quản lý trạng thái, spawn khối, tính điểm, level và tích hợp toàn bộ module | Dựng `CMakeLists.txt` và `main.cpp` skeleton trong tuần 1 |
+| TV5 | Input, Audio & Save | `InputHandler.h`, `InputHandler.cpp`, `AudioManager.h`, `AudioManager.cpp`, `SaveManager.h`, `SaveManager.cpp`, `assets/sounds/`, `test_input.cpp` | Xử lý bàn phím, âm thanh, lưu/load high score, cài đặt âm lượng và keybinding | Làm InputHandler cơ bản và SaveManager trước |
+| Cả nhóm | Testing & Integration | `tests/`, `README.md`, Pull Request | Mỗi thành viên viết test cho module của mình, merge qua Pull Request, kiểm tra tích hợp và hoàn thiện README | Test tích hợp tuần 4, bug fix và polish tuần 5 |
 ## Thành Viên 1 — Game Board & Grid Logic
 
 **Files phụ trách:** `include/Board.h` · `src/Board.cpp` · `tests/test_board.cpp`
