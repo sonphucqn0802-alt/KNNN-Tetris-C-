@@ -57,14 +57,14 @@ Phiên bản trong đồ án này bao gồm các tính năng:
 
 | Thành viên | MSSV | Phụ trách |
 |---|---|---|
-| Nguyễn Văn A | xxxxxxxx | Game Board & Grid Logic |
+| Lê Bửu Chương | 24520231 | Game Board & Grid Logic |
 | Nguyễn Văn B | xxxxxxxx | Tetromino & Movement |
 | Nguyễn Văn C | xxxxxxxx | Rendering & UI |
 | Nguyễn Văn D | xxxxxxxx | Game Loop & Scoring |
 | Nguyễn Văn E | xxxxxxxx | Input, Audio & Save |
 
-> **Giảng viên hướng dẫn:** *(Tên giảng viên)*
-> **Học kỳ:** *(Học kỳ — Năm học)*
+> **Giảng viên hướng dẫn:** *Nguyễn Văn Toàn*
+> **Học kỳ:** *Học kỳ 2 - Năm học 2025-2026*
 
 ---
 
