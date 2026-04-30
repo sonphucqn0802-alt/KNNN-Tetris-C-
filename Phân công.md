@@ -304,3 +304,4 @@ private:
 - Merge vào `main` qua Pull Request, cần ít nhất 2 người review
 - **Không** hardcode hằng số — dùng `Board::WIDTH`, `Board::HEIGHT`
 - Header files phải có include guard hoặc `#pragma once`
+- Chỉ được merge và chỉnh sửa lên nhánh dev. Nhánh main sẽ là nhánh hoàn thiện nhất và sẽ được dùng để nộp bài.

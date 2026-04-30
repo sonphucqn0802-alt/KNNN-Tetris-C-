@@ -57,10 +57,10 @@ Phiên bản trong đồ án này bao gồm các tính năng:
 
 | Thành viên | MSSV | Phụ trách |
 |---|---|---|
+| Nguyễn Khánh Hưng - Nhóm trưởng | 25520640 | Tetromino & Movement |
 | Lê Bửu Chương | 24520231 | Game Board & Grid Logic |
-| Nguyễn Văn B | xxxxxxxx | Tetromino & Movement |
-| Nguyễn Văn C | xxxxxxxx | Rendering & UI |
-| Nguyễn Văn D | xxxxxxxx | Game Loop & Scoring |
+| Võ Trung Hiếu | 25520561 | Rendering & UI |
+| Phạm Sơn Phúc | 25521438 | Game Loop & Scoring |
 | Nguyễn Văn E | xxxxxxxx | Input, Audio & Save |
 
 > **Giảng viên hướng dẫn:** *Nguyễn Văn Toàn*
