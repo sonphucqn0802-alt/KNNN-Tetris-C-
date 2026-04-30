@@ -1,19 +1,3 @@
-#pragma once
-
-enum class InputAction {
-    None,
-    MoveLeft,
-    MoveRight,
-    SoftDrop,
-    HardDrop,
-    RotateClockwise,
-    RotateCounterClockwise,
-    Pause,
-    Quit,
-    Restart
-};
-
-class InputHandler {
-public:
-    InputAction pollAction() const;
-};
+/*
+ * Dinh nghia giao dien doc phim va chuyen thanh hanh dong trong game.
+ */

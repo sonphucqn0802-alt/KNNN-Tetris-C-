@@ -1,9 +1,3 @@
-#pragma once
-
-class AudioManager {
-public:
-    void playMove() const;
-    void playRotate() const;
-    void playLineClear() const;
-    void playGameOver() const;
-};
+/*
+ * Khai bao cac thanh phan dieu khien nhac nen va hieu ung am thanh.
+ */
