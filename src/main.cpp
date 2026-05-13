@@ -4,9 +4,12 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include <ctime>
 using namespace std;
+
 #define H 20
 #define W 15
+
 char board[H][W] = {} ;
 char blocks[][4][4] = {
         {{' ','I',' ',' '},
@@ -76,8 +79,8 @@ char blocks[][4][4] = {
 };
 
 int x=4,y=0,b=1;
-void gotoxy(int x, int y) {
-    COORD c = {x, y};
+void gotoxy(int cx, int cy) {
+    COORD c = { (SHORT)(cx * 2), (SHORT)cy };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 void boardDelBlock(){
