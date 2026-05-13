@@ -101,12 +101,15 @@ void initBoard(){
             if ((i==H-1) || (j==0) || (j == W-1)) board[i][j] = '#';
             else board[i][j] = ' ';
 }
-void draw(){
-    gotoxy(0,0);
-    for (int i = 0 ; i < H ; i++, cout<<endl)
-        for (int j = 0 ; j < W ; j++)
-            cout<<board[i][j];
-}
+void draw() {
+    gotoxy(0, 0);
+
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            printCell(board[i][j]);
+        }
+        cout << "\n";
+    }
 bool canMove(int dx, int dy){
     for (int i = 0 ; i < 4 ; i++)
         for (int j = 0 ; j < 4 ; j++)
