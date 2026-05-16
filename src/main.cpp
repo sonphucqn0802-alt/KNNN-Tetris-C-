@@ -7,6 +7,10 @@
 using namespace std;
 #define H 20
 #define W 15
+// speed càng nhỏ thì khối rơi càng nhanh.
+// linesCleared dùng để đếm số dòng đã xóa.
+int speed = 300;
+int linesCleared = 0;
 char board[H][W] = {} ;
 char blocks[][4][4] = {
         {{' ','I',' ',' '},
