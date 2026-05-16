@@ -4,6 +4,7 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include <ctime>
 using namespace std;
 #define H 20
 #define W 15
@@ -80,9 +81,25 @@ char blocks[][4][4] = {
 };
 
 int x=4,y=0,b=1;
-void gotoxy(int x, int y) {
-    COORD c = {x, y};
+void gotoxy(int cx, int cy) {
+    COORD c = { (SHORT)(cx * 2), (SHORT)cy };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+}
+void printCell(char ch) {
+    switch (ch) {
+        case '#': cout << "##"; break;
+        case ' ': cout << "  "; break;
+
+        case 'I': cout << "[]"; break;
+        case 'O': cout << "()"; break;
+        case 'T': cout << "<>"; break;
+        case 'S': cout << "{}"; break;
+        case 'Z': cout << "/\\"; break;
+        case 'J': cout << "||"; break;
+        case 'L': cout << "=="; break;
+
+        default:  cout << "[]"; break;
+    }
 }
 void boardDelBlock(){
     for (int i = 0 ; i < 4 ; i++)
@@ -102,11 +119,47 @@ void initBoard(){
             if ((i==H-1) || (j==0) || (j == W-1)) board[i][j] = '#';
             else board[i][j] = ' ';
 }
-void draw(){
-    gotoxy(0,0);
-    for (int i = 0 ; i < H ; i++, cout<<endl)
-        for (int j = 0 ; j < W ; j++)
-            cout<<board[i][j];
+void draw() {
+    gotoxy(0, 0);
+
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            printCell(board[i][j]);
+        }
+        cout << "\n";
+    }
+    COORD info = { (SHORT)(W * 2 + 2), 1 };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "=== TETRIS ===";
+
+    info.Y = 3;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "Lines : " << linesCleared << "   ";
+
+    info.Y = 4;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    int level = linesCleared / 5 + 1;
+    cout << "Level : " << level << "   ";
+
+    info.Y = 5;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "Speed : " << speed << "ms  ";
+
+    info.Y = 8;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "[A/D] Move";
+
+    info.Y = 9;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "[W]   Rotate";
+
+    info.Y = 10;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "[X]   Drop";
+
+    info.Y = 11;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), info);
+    cout << "[Q]   Quit";
 }
 bool canMove(int dx, int dy){
     for (int i = 0 ; i < 4 ; i++)
@@ -166,12 +219,15 @@ void removeLine() {
     }
 }
 
-
 int main()
 {
     srand(time(0));
     b = rand() % 7;
+
     system("cls");
+    CONSOLE_CURSOR_INFO cursorInfo = { 1, FALSE };
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+
     initBoard();
     while (1){
         boardDelBlock();
