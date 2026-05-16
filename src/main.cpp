@@ -170,23 +170,42 @@ bool canMove(int dx, int dy){
             }
     return true;
 }
-void removeLine(){
-    int j;
-    for (int i = H-2; i >0 ; i-- ){
-        for (j = 0; j < W-1 ; j++)
-            if (board[i][j] == ' ') break;
-        if (j == W-1){
-            for (int ii = i; ii >0 ; ii-- )
-                for (int j = 0; j < W-1 ; j++ ) board[ii][j] = board[ii-1][j];
+// Hàm này kiểm tra dòng đầy, xóa dòng, rồi kéo các dòng phía trên xuống.
+void removeLine() {
+    for (int i = H-2; i > 0; i--) {
+        bool full = true;
+
+        // Kiểm tra dòng i có đầy hay không
+        // Chỉ kiểm tra từ cột 1 đến W-2, không kiểm tra tường hai bên
+        for (int j = 1; j < W-1; j++) {
+            if (board[i][j] == ' ') {
+                full = false;
+                break;
+            }
+        }
+
+        // Nếu dòng đầy thì xóa dòng
+        if (full) {
+            for (int ii = i; ii > 0; ii--) {
+                for (int j = 1; j < W-1; j++) {
+                    board[ii][j] = board[ii-1][j];
+                }
+            }
+
             i++;
+            linesCleared++;
+
             draw();
-            _sleep(200);
+            _sleep(150);
         }
     }
 }
 
-int main() {
-    srand((unsigned)time(0));
+int main()
+{
+    srand(time(0));
+    b = rand() % 7;
+
     system("cls");
     CONSOLE_CURSOR_INFO cursorInfo = { 1, FALSE };
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
