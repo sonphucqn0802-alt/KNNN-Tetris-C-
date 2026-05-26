@@ -1,120 +1,169 @@
 # KNNN-Tetris-C-
-# 🎮 Tetris C++
+# Tetris C++
 
-> Đồ án môn học **Kỹ Năng Nghề Nghiệp** — Khoa Công Nghệ Thông Tin
+Do an mon hoc Ky Nang Nghe Nghiep: game Tetris viet bang C++17, chay truc tiep trong terminal/console.
 
----
+Game hien co:
 
-## Giới Thiệu
-
-Đây là dự án xây dựng trò chơi **Tetris** kinh điển bằng ngôn ngữ lập trình **C++**, được thực hiện như một đồ án nhóm trong môn học Kỹ Năng Nghề Nghiệp.
-
-Dự án không chỉ đơn thuần là tái hiện lại một tựa game huyền thoại, mà còn là cơ hội để nhóm thực hành toàn bộ quy trình phát triển phần mềm theo nhóm: từ phân tích yêu cầu, thiết kế kiến trúc, phân chia công việc, lập trình hướng đối tượng, cho đến kiểm thử và tích hợp sản phẩm cuối.
-
----
-
-## Mục Tiêu Môn Học
-
-Thông qua đồ án này, nhóm hướng đến việc rèn luyện và thể hiện các kỹ năng:
-
-- **Làm việc nhóm** — phân chia công việc rõ ràng, phối hợp qua Git và Pull Request
-- **Lập trình hướng đối tượng** — thiết kế class, encapsulation, tách biệt logic và giao diện
-- **Quản lý mã nguồn** — sử dụng Git/GitHub, tuân thủ quy ước đặt tên và commit
-- **Tư duy giải quyết vấn đề** — xử lý va chạm, thuật toán xoay khối, quản lý trạng thái game
-- **Viết tài liệu kỹ thuật** — README, phân chia nhiệm vụ, chú thích mã nguồn
+- 7 khoi Tetromino: I, O, T, S, Z, J, L
+- Di chuyen, xoay khoi, soft drop va hard drop
+- Ghost piece hien vi tri roi du doan
+- Tinh diem, level va tang toc do roi theo so dong da xoa
+- Luu diem cao vao file `saves/highscore.dat`
+- Giao dien console co mau ANSI
+- Am thanh don gian tren Windows bang `Beep`
 
 ---
 
-## Về Trò Chơi
+## Cong Nghe Su Dung
 
-Tetris là tựa game xếp hình ra đời năm 1984, được thiết kế bởi lập trình viên người Nga **Alexey Pajitnov**. Người chơi điều khiển các khối hình học (Tetromino) rơi từ trên xuống, sắp xếp sao cho lấp đầy hàng ngang để ghi điểm. Trò chơi kết thúc khi các khối chồng lên đến đỉnh màn hình.
-
-Phiên bản trong đồ án này bao gồm các tính năng:
-
-- 7 loại khối Tetromino chuẩn (I, O, T, S, Z, J, L)
-- Hệ thống xoay khối, di chuyển và hard drop
-- Ghost piece hiển thị vị trí rơi dự đoán
-- Tính điểm theo chuẩn Nintendo (combo xóa nhiều hàng)
-- Hệ thống level và tăng tốc độ
-- Lưu điểm cao (high score)
-- Hiệu ứng âm thanh
-
----
-
-## Công Nghệ Sử Dụng
-
-| Thành phần | Công nghệ |
+| Thanh phan | Cong nghe |
 |---|---|
-| Ngôn ngữ | C++17 |
+| Ngon ngu | C++17 |
 | Build system | CMake |
-| Thư viện đồ họa | SDL2 / SFML / ncurses |
-| Quản lý mã nguồn | Git & GitHub |
-| Môi trường | Windows / Linux / macOS |
+| Giao dien | Console/terminal ANSI |
+| Am thanh | Windows `Beep`, he dieu hanh khac se bo qua am thanh |
+| Luu du lieu | File `saves/highscore.dat` |
 
 ---
 
-## Nhóm Thực Hiện
+## Nhom Thuc Hien
 
-| Thành viên | MSSV | Phụ trách |
+| Thanh vien | MSSV | Phu trach |
 |---|---|---|
-| Nguyễn Khánh Hưng - Nhóm trưởng | 25520640 | Tetromino & Movement |
-| Lê Bửu Chương | 24520231 | Game Board & Grid Logic |
-| Võ Trung Hiếu | 25520561 | Rendering & UI |
-| Phạm Sơn Phúc | 25521438 | Game Loop & Scoring |
-| Nguyễn Văn E | xxxxxxxx | Input, Audio & Save |
+| Nguyen Khanh Hung - Nhom truong | 25520640 | Tetromino & Movement |
+| Le Buu Chuong | 24520231 | Game Board & Grid Logic |
+| Vo Trung Hieu | 25520561 | Rendering & UI |
+| Pham Son Phuc | 25521438 | Game Loop & Scoring |
+| Nguyen Van E | xxxxxxxx | Input, Audio & Save |
 
-> **Giảng viên hướng dẫn:** *Nguyễn Văn Toàn*
-> **Học kỳ:** *Học kỳ 2 - Năm học 2025-2026*
-
----
-
-## Cấu Trúc Dự Án
-
-```
-tetris-cpp/
-├── include/        # Header files (interface các module)
-├── src/            # Source files (implementation)
-├── assets/         # Tài nguyên (âm thanh, font)
-├── saves/          # Dữ liệu lưu trữ (high score)
-├── tests/          # Unit test từng module
-├── CMakeLists.txt
-├── README.md
-└── TASK_DIVISION.md
-```
-
-Xem chi tiết phân chia công việc tại [`TASK_DIVISION.md`](./TASK_DIVISION.md).
+> Giang vien huong dan: Nguyen Van Toan
+> Hoc ky: Hoc ky 2 - Nam hoc 2025-2026
 
 ---
 
-## Hướng Dẫn Cài Đặt & Chạy
+## Cau Truc Du An
+
+```text
+KNNN-Tetris-C-/
+|-- CMakeLists.txt
+|-- README.md
+|-- Phân công.md
+|-- Deadline/
+|   |-- Tuần 2.md
+|   `-- Tuần 3.md
+|-- assets/
+|   |-- fonts/
+|   `-- sounds/
+|-- include/
+|   |-- AudioManager.h
+|   |-- Board.h
+|   |-- GameLoop.h
+|   |-- InputHandler.h
+|   |-- Renderer.h
+|   |-- SaveManager.h
+|   |-- ScoreManager.h
+|   `-- Tetromino.h
+|-- saves/
+|   `-- highscore.dat
+`-- src/
+    |-- AudioManager.cpp
+    |-- Board.cpp
+    |-- GameLoop.cpp
+    |-- InputHandler.cpp
+    |-- main.cpp
+    |-- Renderer.cpp
+    |-- SaveManager.cpp
+    |-- ScoreManager.cpp
+    `-- Tetromino.cpp
+```
+
+Ghi chu: hien tai du an khong co thu muc `tests/`. File phan cong cua nhom la `Phân công.md`.
+
+---
+
+## Cach Tai Xuong
+
+Dung Git:
 
 ```bash
-# Clone repository
-git clone https://github.com/<your-org>/tetris-cpp.git
-cd tetris-cpp
+git clone https://github.com/ChuongLe279/KNNN-Tetris-C-.git
+cd KNNN-Tetris-C-
+```
 
-# Build
-mkdir build && cd build
-cmake ..
-make
+Hoac vao GitHub, bam `Code` -> `Download ZIP`, roi giai nen.
 
-# Chạy game
-./tetris
+---
+
+## Cach Build Va Chay
+
+### Cach 1: Dung CMake
+
+Can cai san CMake va compiler C++.
+
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
+Chay tren Windows:
+
+```powershell
+.\build\tetris.exe
+```
+
+Chay tren Linux/macOS:
+
+```bash
+./build/tetris
+```
+
+### Cach 2: Build nhanh bang g++
+
+Neu may co `g++`, co the build truc tiep:
+
+```bash
+g++ -std=c++17 -Iinclude src/AudioManager.cpp src/Board.cpp src/GameLoop.cpp src/InputHandler.cpp src/main.cpp src/Renderer.cpp src/SaveManager.cpp src/ScoreManager.cpp src/Tetromino.cpp -o tetris
+```
+
+Tren Windows, neu dung PowerShell:
+
+```powershell
+g++ -std=c++17 -Iinclude src\AudioManager.cpp src\Board.cpp src\GameLoop.cpp src\InputHandler.cpp src\main.cpp src\Renderer.cpp src\SaveManager.cpp src\ScoreManager.cpp src\Tetromino.cpp -o tetris.exe
+.\tetris.exe
 ```
 
 ---
 
-## Điều Hướng Bàn Phím
+## Dieu Khien
 
-| Phím | Chức năng |
+| Phim | Chuc nang |
 |---|---|
-| ← / → | Di chuyển trái / phải |
-| ↓ | Soft drop |
-| ↑ / X | Xoay xuôi chiều kim đồng hồ |
-| Z | Xoay ngược chiều kim đồng hồ |
-| Space | Hard drop |
-| P | Tạm dừng |
-| Esc | Về menu |
+| `A` hoac mui ten trai | Di chuyen sang trai |
+| `D` hoac mui ten phai | Di chuyen sang phai |
+| `S` hoac mui ten xuong | Soft drop |
+| `W`, `X` hoac mui ten len | Xoay xuoi chieu kim dong ho |
+| `Z` | Xoay nguoc chieu kim dong ho |
+| `Space` | Hard drop |
+| `P` | Tam dung / tiep tuc |
+| `R` | Choi lai |
+| `Q` hoac `Esc` | Thoat game |
+
+---
+
+## Cac File Chinh
+
+| File | Vai tro |
+|---|---|
+| `src/main.cpp` | Diem bat dau chuong trinh |
+| `GameLoop.*` | Dieu phoi vong lap game, spawn khoi, xu ly trang thai |
+| `Board.*` | Quan ly luoi choi, va cham, khoa khoi, xoa dong |
+| `Tetromino.*` | Dinh nghia hinh dang, vi tri va xoay khoi |
+| `Renderer.*` | Ve giao dien console |
+| `InputHandler.*` | Doc phim va doi sang hanh dong |
+| `ScoreManager.*` | Tinh diem, level va toc do roi |
+| `SaveManager.*` | Doc/ghi high score |
+| `AudioManager.*` | Phat am thanh don gian |
 
 ---
 
