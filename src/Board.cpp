@@ -1,6 +1,7 @@
 /*
  * Cai dat cac thao tac tren board nhu kiem tra vi tri, khoa khoi va xoa dong.
  */
+
 #include "Board.h"
 
 #include <algorithm>
@@ -75,4 +76,4 @@ void Board::setCell(int x, int y, int value) {
 
 const std::vector<std::vector<int>>& Board::grid() const {
     return grid_;
-}
+
