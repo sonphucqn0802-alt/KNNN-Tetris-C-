@@ -1,3 +1,6 @@
+/*
+ * Dinh nghia bo quan ly diem, cap do va toc do roi cua khoi.
+ */
 #pragma once
 
 class ScoreManager {

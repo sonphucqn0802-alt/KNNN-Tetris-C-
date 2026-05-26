@@ -1,3 +1,6 @@
+/*
+ * Diem vao chuong trinh, khoi tao game va xu ly loi ngoai le.
+ */
 #include "GameLoop.h"
 
 #include <exception>

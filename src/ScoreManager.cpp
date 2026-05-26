@@ -1,3 +1,6 @@
+/*
+ * Cai dat cach tinh diem, len cap va dieu chinh toc do roi theo tien do.
+ */
 #include "ScoreManager.h"
 
 #include <algorithm>
