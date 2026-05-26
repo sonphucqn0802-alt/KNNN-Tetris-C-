@@ -100,7 +100,7 @@ void Renderer::draw(const Board& board,
         for (int x = 0; x < Board::Width; ++x) {
             char display = ' ';
             const int cell = board.getCell(x, y);
-            if (cell != 1) {
+            if (cell != 0) {
                 display = blockForValue(cell);
             } else if (containsCell(current, x, y)) {
                 display = blockForValue(current.getColorId());
@@ -135,7 +135,7 @@ void Renderer::draw(const Board& board,
         } else if (y == 13) {
             std::cout << "  P: pause  R: restart";
         } else if (y == 14) {
-            std::cout << "  Esc: quit";
+            std::cout << "  Q/Esc: quit";
         }
 
         std::cout << '\n';
