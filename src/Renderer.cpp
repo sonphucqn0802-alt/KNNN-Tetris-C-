@@ -12,12 +12,27 @@
 #endif
 
 namespace {
-char blockForValue(int value) {
-    static constexpr char kBlocks[] = " IOTSZJL";
-    if (value >= 0 && value < static_cast<int>(sizeof(kBlocks) - 1)) {
-        return kBlocks[value];
+std::string tileForValue(int value) {
+    static constexpr const char* kColors[] = {
+        "",
+        "\x1B[106m",
+        "\x1B[103m",
+        "\x1B[105m",
+        "\x1B[102m",
+        "\x1B[101m",
+        "\x1B[104m",
+        "\x1B[43m"
+    };
+
+    if (value > 0 && value < static_cast<int>(sizeof(kColors) / sizeof(kColors[0]))) {
+        return std::string(kColors[value]) + "  " + "\x1B[0m";
     }
-    return '#';
+
+    return "[]";
+}
+
+std::string ghostTile() {
+    return "\x1B[90m::\x1B[0m";
 }
 
 bool containsCell(const Tetromino& piece, int x, int y) {
@@ -98,17 +113,17 @@ void Renderer::draw(const Board& board,
     for (int y = 0; y < Board::Height; ++y) {
         std::cout << '|';
         for (int x = 0; x < Board::Width; ++x) {
-            char display = ' ';
+            std::string display = "  ";
             const int cell = board.getCell(x, y);
             if (cell != 0) {
-                display = blockForValue(cell);
+                display = tileForValue(cell);
             } else if (containsCell(current, x, y)) {
-                display = blockForValue(current.getColorId());
+                display = tileForValue(current.getColorId());
             } else if (containsCell(ghost, x, y)) {
-                display = '.';
+                display = ghostTile();
             }
 
-            std::cout << display << display;
+            std::cout << display;
         }
         std::cout << '|';
 
@@ -154,9 +169,5 @@ void Renderer::draw(const Board& board,
 }
 
 void Renderer::clearScreen() const {
-    if (firstDraw_) {
-        std::cout << "\x1B[2J\x1B[H";
-    } else {
-        std::cout << "\x1B[H";
-    }
+    std::cout << "\x1B[2J\x1B[H";
 }
