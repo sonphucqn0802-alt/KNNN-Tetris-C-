@@ -1,3 +1,6 @@
+/*
+ * Khai bao bo ve man hinh console, thong tin trang thai va giao dien game.
+ */
 #pragma once
 
 #include "Board.h"

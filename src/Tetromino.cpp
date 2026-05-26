@@ -1,3 +1,6 @@
+/*
+ * Cai dat hinh dang, mau, vi tri va phep xoay cua cac khoi Tetromino.
+ */
 #include "Tetromino.h"
 
 namespace {
