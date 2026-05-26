@@ -8,7 +8,7 @@
 
 Board::Board()
     : grid_(Height, std::vector<int>(Width, 0)) {}
-
+// Cài đặt thuật toán khởi tạo/khôi phục ma trận bàn chơi và kiểm tra điều kiện va chạm biên của khối gạch
 void Board::reset() {
     for (auto& row : grid_) {
         std::fill(row.begin(), row.end(), 0);
