@@ -1,3 +1,4 @@
+// Hệ thống thư viện chuẩn: iostream (nhập xuất), windows.h (can thiệp màn hình console)git add .
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
