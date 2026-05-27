@@ -19,6 +19,7 @@ void gotoxy(int cx, int cy) {
 #include <iostream>
 
 int main() {
+    // Khởi chạy luồng game chính, quản lý thời gian thực (FPS) và điều khiển vòng lặp tương tác người chơi
     try {
         GameLoop game;
         game.run();
