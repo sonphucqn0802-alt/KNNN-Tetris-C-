@@ -18,15 +18,19 @@ void ScoreManager::reset() {
     level_ = 0;
 }
 
+// Tính toán điểm số khi người chơi ăn điểm bằng cách xóa dòng
+// Hệ số điểm tăng vọt nếu xóa được nhiều dòng cùng lúc (đặc biệt là 4 dòng - Tetris)
 void ScoreManager::addClearedLines(int count) {
     static constexpr int kLineScores[] = {0, 40, 100, 300, 1200};
     if (count < 1 || count > 4) {
         return;
     }
-
+    
+    // Điểm thưởng tỉ lệ thuận với cấp độ (level) hiện tại
     score_ += kLineScores[count] * (level_ + 1);
     linesCleared_ += count;
     // Sử dụng kLinesPerLevel thay vì số 10
+    // Cứ mỗi kLinesPerLevel (10 dòng) thì tăng 1 cấp độ
     level_ = linesCleared_ / kLinesPerLevel; 
 }
 
