@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+// Khởi tạo ScoreManager: Đặt điểm số, số dòng đã xóa và cấp độ ban đầu về 0
 ScoreManager::ScoreManager()
     : score_(0),
       linesCleared_(0),
