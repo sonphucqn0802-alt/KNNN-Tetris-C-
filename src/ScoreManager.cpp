@@ -11,6 +11,7 @@ ScoreManager::ScoreManager()
       linesCleared_(0),
       level_(0) {}
 
+// Đặt lại toàn bộ hệ thống tính điểm về trạng thái ban đầu khi bắt đầu ván mới (New Game)      
 void ScoreManager::reset() {
     score_ = 0;
     linesCleared_ = 0;
