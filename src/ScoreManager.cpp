@@ -64,6 +64,8 @@ int ScoreManager::getDisplayLevel() const {
     return level_ + 1; // Level hiển thị cho người chơi (bắt đầu từ 1)
 }
 
+// Tính toán độ trễ (mili-giây) giữa mỗi lần khối rơi xuống 1 ô
+// Cấp độ càng cao, độ trễ càng giảm (game chạy nhanh hơn), giới hạn ở mức kMinFallDelayMs
 int ScoreManager::getFallDelayMs() const {
     // Thay thế 80, 800 và 60 bằng các hằng số tương ứng
     return std::max(kMinFallDelayMs, kBaseFallDelayMs - level_ * kDelayDecreasePerLevel);
