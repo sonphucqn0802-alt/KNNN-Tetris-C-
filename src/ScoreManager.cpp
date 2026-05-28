@@ -46,6 +46,7 @@ void ScoreManager::addHardDrop(int rows) {
     // Sử dụng kHardDropMultiplier thay vì số 2
     score_ += rows * kHardDropMultiplier; 
 }
+// --- Các hàm cung cấp dữ liệu cho UI (Giao diện người dùng) ---
 
 int ScoreManager::getScore() const {
     return score_;
@@ -56,11 +57,11 @@ int ScoreManager::getLinesCleared() const {
 }
 
 int ScoreManager::getLevel() const {
-    return level_;
+    return level_; // Level logic (bắt đầu từ 0)
 }
 
 int ScoreManager::getDisplayLevel() const {
-    return level_ + 1;
+    return level_ + 1; // Level hiển thị cho người chơi (bắt đầu từ 1)
 }
 
 int ScoreManager::getFallDelayMs() const {
