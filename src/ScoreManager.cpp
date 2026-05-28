@@ -40,6 +40,8 @@ void ScoreManager::addSoftDrop() {
     score_ += kSoftDropScore; 
 }
 
+// Tính điểm thưởng khi dùng phím Space (Hard Drop) để khối rơi tuột xuống đáy ngay lập tức
+// Điểm nhân theo số dòng mà khối vừa lướt qua khi rơi xuống
 void ScoreManager::addHardDrop(int rows) {
     // Sử dụng kHardDropMultiplier thay vì số 2
     score_ += rows * kHardDropMultiplier; 
