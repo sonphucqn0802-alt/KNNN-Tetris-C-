@@ -1,13 +1,14 @@
 /*
  * Cai dat cac thao tac tren board nhu kiem tra vi tri, khoa khoi va xoa dong.
  */
+
 #include "Board.h"
 
 #include <algorithm>
 
 Board::Board()
     : grid_(Height, std::vector<int>(Width, 0)) {}
-
+// Cài đặt thuật toán khởi tạo/khôi phục ma trận bàn chơi và kiểm tra điều kiện va chạm biên của khối gạch
 void Board::reset() {
     for (auto& row : grid_) {
         std::fill(row.begin(), row.end(), 0);
@@ -75,4 +76,4 @@ void Board::setCell(int x, int y, int value) {
 
 const std::vector<std::vector<int>>& Board::grid() const {
     return grid_;
-}
+
