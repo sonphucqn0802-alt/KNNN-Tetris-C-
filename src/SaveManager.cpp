@@ -40,3 +40,13 @@ void SaveManager::SaveHighScore(int Score) const {
         Output.write(reinterpret_cast<const char*>(&ValidScore), sizeof(ValidScore));
     }
 }   
+int SaveManager::LoadHighScore() const {
+    std::ifstream Input(ResolveSavePath(SavePath_), std::ios::binary);
+    int Score = 0;
+
+    // Kiểm tra xem file có mở thành công và có dữ liệu không
+    if (!Input.is_open() || !Input.read(reinterpret_cast<char*>(&Score), sizeof(Score))){
+        return 0; // Trả về 0 nếu file chưa tồn tại hoặc lỗi đọc
+    }
+    return std::max(0, Score);
+}
