@@ -2,16 +2,15 @@
  * Dinh nghia giao dien luu, tai diem cao va cac thiet lap cua nguoi choi.
  */
 #pragma once
-
 #include <string>
 
 class SaveManager {
 public:
-    explicit SaveManager(std::string savePath = "saves/highscore.dat");
+    explicit SaveManager(std::string SavePath = "saves/highscore.dat");
 
-    int loadHighScore() const;
-    void saveHighScore(int score) const;
+    int LoadHighScore() const;
+    void SaveHighScore(int Score) const;
 
 private:
-    std::string savePath_;
+    std::string SavePath_;
 };

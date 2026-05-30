@@ -2,52 +2,45 @@
  * Cai dat doc ghi diem cao va du lieu luu tru cua game.
  */
 #include "SaveManager.h"
-
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <utility>
 
 namespace {
-std::filesystem::path resolveSavePath(const std::string& savePath) {
-    const std::filesystem::path direct(savePath);
-    if (std::filesystem::exists(direct) || std::filesystem::exists(direct.parent_path())) {
-        return direct;
+std::filesystem::path ResolveSavePath(const std::string &SavePath) {
+    const std::filesystem::path Direct(SavePath);
+    if (std::filesystem::exists(Direct) || std::filesystem::exists(Direct.parent_path())) {
+        return Direct;
     }
-
-    const std::filesystem::path fromBuild = std::filesystem::path("..") / direct;
-    if (std::filesystem::exists(fromBuild.parent_path())) {
-        return fromBuild;
+    const std::filesystem::path FromBuild = std::filesystem::path("..") / Direct;
+    if (std::filesystem::exists(FromBuild.parent_path())) {
+        return FromBuild;
     }
-
-    return direct;
+    return Direct;
 }
 }
 
-SaveManager::SaveManager(std::string savePath)
-    : savePath_(std::move(savePath)) {}
+SaveManager::SaveManager(std::string SavePath) : SavePath_(std::move(SavePath)) {}
 
-int SaveManager::loadHighScore() const {
-    std::ifstream input(resolveSavePath(savePath_));
-    int score = 0;
-
-    if (!(input >> score)) {
+int SaveManager::LoadHighScore() const {
+    std::ifstream Input(ResolveSavePath(SavePath_), std::ios::binary);
+    int Score = 0;
+    if (!Input.is_open() || !Input.read(reinterpret_cast<char*>(&Score), sizeof(Score))) {
         return 0;
     }
-
-    return std::max(0, score);
+    return std::max(0, Score);
 }
 
-void SaveManager::saveHighScore(int score) const {
-    const std::filesystem::path path = resolveSavePath(savePath_);
-    const auto parent = path.parent_path();
-
-    if (!parent.empty()) {
-        std::filesystem::create_directories(parent);
+void SaveManager::SaveHighScore(int Score) const {
+    const std::filesystem::path Path = ResolveSavePath(SavePath_);
+    const auto Parent = Path.parent_path();
+    if (!Parent.empty()) {
+        std::filesystem::create_directories(Parent);
     }
-
-    std::ofstream output(path, std::ios::trunc);
-    if (output) {
-        output << std::max(0, score) << '\n';
+    std::ofstream Output(Path, std::ios::trunc | std::ios::binary);
+    if (Output) {
+        int ValidScore = std::max(0, Score);
+        Output.write(reinterpret_cast<const char*>(&ValidScore), sizeof(ValidScore));
     }
 }
