@@ -11,7 +11,7 @@ GameLoop::GameLoop()
     : rng_(std::random_device{}()),
       current_(TetrominoType::I),
       next_(randomPiece()),
-      highScore_(save_.loadHighScore()),
+      highScore_(save_.LoadHighScore()),
       running_(true),
       paused_(false),
       gameOver_(false) {
@@ -42,7 +42,7 @@ void GameLoop::run() {
     }
 
     highScore_ = std::max(highScore_, score_.getScore());
-    save_.saveHighScore(highScore_);
+    save_.SaveHighScore(highScore_);
 }
 
 Tetromino GameLoop::randomPiece() {
@@ -67,7 +67,7 @@ void GameLoop::spawnPiece() {
     if (!board_.isValidPosition(current_)) {
         gameOver_ = true;
         highScore_ = std::max(highScore_, score_.getScore());
-        save_.saveHighScore(highScore_);
+        save_.SaveHighScore(highScore_);
         audio_.playGameOver();
     }
 }

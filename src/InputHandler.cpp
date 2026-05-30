@@ -4,12 +4,24 @@
 #include "InputHandler.h"
 #ifdef _WIN32
 #include <conio.h>
+#include <windows.h>
 #else
 #include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
 #endif
 namespace {
+#ifdef _WIN32
+void configureConsoleMode() {
+    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode = 0;
+    GetConsoleMode(hStdin, &mode);
+    mode &= ~ENABLE_LINE_INPUT;  // Disable line buffering
+    mode &= ~ENABLE_ECHO_INPUT;  // Disable echo
+    SetConsoleMode(hStdin, mode);
+}
+#endif
+
 #ifndef _WIN32
 int readCharNonBlocking(){
     termios oldTerm{};
@@ -30,6 +42,12 @@ int readCharNonBlocking(){
 }
 InputAction InputHandler::pollAction() const {
 #ifdef _WIN32
+    static bool initialized = false;
+    if (!initialized) {
+        configureConsoleMode();
+        initialized = true;
+    }
+    
     if (!_kbhit()){
         return InputAction::None;
     }
@@ -71,7 +89,7 @@ InputAction InputHandler::pollAction() const {
         case ' ': return InputAction::HardDrop;
         case 'p': case 'P': return InputAction::Pause;
         case 'r': case 'R': return InputAction::Restart;
-        case 'q': case 'Q': return InputAction::Quit;
+        case 'q': case 'Q': case 27: return InputAction::Quit;  // 27 is ESC key
         default: return InputAction::None;
     }
 }
