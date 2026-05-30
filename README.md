@@ -35,7 +35,7 @@ Game hien co:
 | Le Buu Chuong | 24520231 | Game Board & Grid Logic |
 | Vo Trung Hieu | 25520561 | Rendering & UI |
 | Pham Son Phuc | 25521438 | Game Loop & Scoring |
-| Nguyen Van E | xxxxxxxx | Input, Audio & Save |
+| Nguyễn Thanh Phong | 25521387 | Input, Audio & Save |
 
 > Giang vien huong dan: Nguyen Van Toan
 > Hoc ky: Hoc ky 2 - Nam hoc 2025-2026

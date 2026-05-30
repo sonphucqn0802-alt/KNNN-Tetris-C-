@@ -1,5 +1,5 @@
 /*
- * Cai dat viec ve board, khoi hien tai, diem so va huong dan tren console.
+ * Thanh Phong Cap nhat ham ve board, khoi hien tai, diem so va huong dan tren console.
  */
 #include "Renderer.h"
 
