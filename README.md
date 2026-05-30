@@ -1,170 +1,98 @@
-# KNNN-Tetris-C-
-# Tetris C++
+# 🕹️ KNNN-Tetris-C- | Classic Tetris in Console
 
-Do an mon hoc Ky Nang Nghe Nghiep: game Tetris viet bang C++17, chay truc tiep trong terminal/console.
+[![C++ Version](https://img.shields.io/badge/C%2B%2B-17-blue.svg?style=flat-glass&logo=c%2B%2B)](https://en.cppreference.com/w/cpp/17)
+[![Build System](https://img.shields.io/badge/Build-CMake-green.svg?style=flat-glass&logo=cmake)](https://cmake.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg?style=flat-glass)](https://github.com)
 
-Game hien co:
-
-- 7 khoi Tetromino: I, O, T, S, Z, J, L
-- Di chuyen, xoay khoi, soft drop va hard drop
-- Ghost piece hien vi tri roi du doan
-- Tinh diem, level va tang toc do roi theo so dong da xoa
-- Luu diem cao vao file `saves/highscore.dat`
-- Giao dien console co mau ANSI
-- Am thanh don gian tren Windows bang `Beep`
+Dự án phát triển trò chơi **Tetris cổ điển** chạy trực tiếp trong môi trường Terminal/Console được viết bằng chuẩn mã nguồn **C++17**. Đây là đồ án thực hành cho môn học **Kỹ Năng Nghề Nghiệp** tại Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM (UIT).
 
 ---
 
-## Cong Nghe Su Dung
+## 🚀 Tính Năng Nổi Bật
 
-| Thanh phan | Cong nghe |
-|---|---|
-| Ngon ngu | C++17 |
-| Build system | CMake |
-| Giao dien | Console/terminal ANSI |
-| Am thanh | Windows `Beep`, he dieu hanh khac se bo qua am thanh |
-| Luu du lieu | File `saves/highscore.dat` |
-
----
-
-## Nhom Thuc Hien
-
-| Thanh vien | MSSV | Phu trach |
-|---|---|---|
-| Nguyen Khanh Hung - Nhom truong | 25520640 | Tetromino & Movement |
-| Le Buu Chuong | 24520231 | Game Board & Grid Logic |
-| Vo Trung Hieu | 25520561 | Rendering & UI |
-| Pham Son Phuc | 25521438 | Game Loop & Scoring |
-| Nguyễn Thanh Phong | 25521387 | Input, Audio & Save |
-
-> Giang vien huong dan: Nguyen Van Toan
-> Hoc ky: Hoc ky 2 - Nam hoc 2025-2026
+*   **Đầy đủ 7 khối gạch chuẩn:** Hỗ trợ đầy đủ các khối Tetromino (I, O, T, S, Z, J, L) với màu sắc ANSI trực quan.
+*   **Hệ thống điều khiển mượt mà:** Di chuyển, xoay khối, hạ thấp (Soft Drop) và rơi nhanh (Hard Drop).
+*   **Hỗ trợ Ghost Piece:** Hiển thị bóng mờ dự đoán vị trí rơi thực tế để hỗ trợ người chơi căn chỉnh.
+*   **Cơ chế tính điểm & Cấp độ:** Tự động tăng tốc độ rơi của khối gạch dựa trên cấp độ và số lượng dòng đã dọn sạch.
+*   **Lưu trữ điểm số:** Tích hợp bộ đọc/ghi file nhị phân (`saves/highscore.dat`) giúp lưu trữ và cập nhật điểm kỷ lục bền vững.
+*   **Âm thanh tích hợp:** Phát các hiệu ứng âm thanh và nhạc nền thông qua hệ thống Windows `Beep`.
 
 ---
 
-## Cau Truc Du An
+## 🛠️ Công Nghệ Sử Dụng
+
+| Thành Phần | Công Nghệ / Giải Pháp | Chi Tiết |
+| :--- | :--- | :--- |
+| **Ngôn ngữ** | C++17 | Đảm bảo tính hiện đại, tối ưu hiệu năng |
+| **Hệ thống Build** | CMake | Quản lý biên dịch dự án đa nền tảng dễ dàng |
+| **Giao diện** | ANSI Escape Codes | Kết xuất đồ họa màu sắc trực tiếp trên Console |
+| **Âm thanh** | Windows `Beep` API | Phát tiếng bip hệ thống (Bỏ qua trên Linux/macOS) |
+| **Dữ liệu** | Binary File Stream | Lưu/đọc điểm kỷ lục dưới dạng nhị phân bảo mật |
+
+---
+
+## 👥 Nhóm Thực Hiện
+
+*   **Giảng viên hướng dẫn:** Thầy Nguyễn Văn Toàn
+*   **Học kỳ:** Học kỳ 2 — Năm học 2025 - 2026
+
+| Thành viên | MSSV | Vai trò phụ trách |
+| :--- | :--- | :--- |
+| **Nguyễn Khánh Hung** | `25520640` | Trưởng nhóm, Quản lý Khối Tetromino & Xử lý Di chuyển |
+| **Lê Bửu Chương** | `24520231` | Thiết kế Game Board & Xử lý Logic Ma trận Lưới |
+| **Võ Trung Hiếu** | `25520561` | Xử lý Đồ họa, Thiết kế Renderer & Giao diện UI |
+| **Phạm Sơn Phúc** | `25521438` | Cấu hình Vòng lặp Game (Game Loop) & Hệ thống Tính điểm |
+| **Nguyễn Thanh Phong** | `25521387` | Tích hợp hệ thống Input, Audio & Hệ thống Save/Load |
+
+---
+
+## 📂 Cấu Trúc Dự Án
 
 ```text
 KNNN-Tetris-C-/
-|-- CMakeLists.txt
-|-- README.md
-|-- Phân công.md
-|-- Deadline/
-|   |-- Tuần 2.md
-|   `-- Tuần 3.md
-|-- assets/
-|   |-- fonts/
-|   `-- sounds/
-|-- include/
-|   |-- AudioManager.h
-|   |-- Board.h
-|   |-- GameLoop.h
-|   |-- InputHandler.h
-|   |-- Renderer.h
-|   |-- SaveManager.h
-|   |-- ScoreManager.h
-|   `-- Tetromino.h
-|-- saves/
-|   `-- highscore.dat
-`-- src/
-    |-- AudioManager.cpp
-    |-- Board.cpp
-    |-- GameLoop.cpp
-    |-- InputHandler.cpp
-    |-- main.cpp
-    |-- Renderer.cpp
-    |-- SaveManager.cpp
-    |-- ScoreManager.cpp
-    `-- Tetromino.cpp
-```
-
-Ghi chu: hien tai du an khong co thu muc `tests/`. File phan cong cua nhom la `Phân công.md`.
-
----
-
-## Cach Tai Xuong
-
-Dung Git:
-
-```bash
-git clone https://github.com/ChuongLe279/KNNN-Tetris-C-.git
-cd KNNN-Tetris-C-
-```
-
-Hoac vao GitHub, bam `Code` -> `Download ZIP`, roi giai nen.
-
----
-
-## Cach Build Va Chay
-
-### Cach 1: Dung CMake
-
-Can cai san CMake va compiler C++.
-
-```bash
-cmake -S . -B build
-cmake --build build
-```
-
-Chay tren Windows:
-
-```powershell
-.\build\tetris.exe
-```
-
-Chay tren Linux/macOS:
-
-```bash
-./build/tetris
-```
-
-### Cach 2: Build nhanh bang g++
-
-Neu may co `g++`, co the build truc tiep:
-
-```bash
-g++ -std=c++17 -Iinclude src/AudioManager.cpp src/Board.cpp src/GameLoop.cpp src/InputHandler.cpp src/main.cpp src/Renderer.cpp src/SaveManager.cpp src/ScoreManager.cpp src/Tetromino.cpp -o tetris
-```
-
-Tren Windows, neu dung PowerShell:
-
-```powershell
-g++ -std=c++17 -Iinclude src\AudioManager.cpp src\Board.cpp src\GameLoop.cpp src\InputHandler.cpp src\main.cpp src\Renderer.cpp src\SaveManager.cpp src\ScoreManager.cpp src\Tetromino.cpp -o tetris.exe
-.\tetris.exe
-```
-
----
-
-## Dieu Khien
-
-| Phim | Chuc nang |
-|---|---|
-| `A` hoac mui ten trai | Di chuyen sang trai |
-| `D` hoac mui ten phai | Di chuyen sang phai |
-| `S` hoac mui ten xuong | Soft drop |
-| `W`, `X` hoac mui ten len | Xoay xuoi chieu kim dong ho |
-| `Z` | Xoay nguoc chieu kim dong ho |
-| `Space` | Hard drop |
-| `P` | Tam dung / tiep tuc |
-| `R` | Choi lai |
-| `Q` hoac `Esc` | Thoat game |
-
----
-
-## Cac File Chinh
-
-| File | Vai tro |
-|---|---|
-| `src/main.cpp` | Diem bat dau chuong trinh |
-| `GameLoop.*` | Dieu phoi vong lap game, spawn khoi, xu ly trang thai |
-| `Board.*` | Quan ly luoi choi, va cham, khoa khoi, xoa dong |
-| `Tetromino.*` | Dinh nghia hinh dang, vi tri va xoay khoi |
-| `Renderer.*` | Ve giao dien console |
-| `InputHandler.*` | Doc phim va doi sang hanh dong |
-| `ScoreManager.*` | Tinh diem, level va toc do roi |
-| `SaveManager.*` | Doc/ghi high score |
-| `AudioManager.*` | Phat am thanh don gian |
-
----
-
-Link Overleaf: https://www.overleaf.com/project/69b669a6c9c8842b2d77068d
+├── .gitignore               # Cấu hình bỏ qua các file tạm, file build khi push Git
+├── CMakeLists.txt           # File cấu hình tổng của hệ thống biên dịch CMake
+├── Phân công.md             # Tài liệu phân chia công việc trong nhóm
+├── README.md                # Tài liệu hướng dẫn và giới thiệu tổng quan dự án
+├── tetris.exe               # File thực thi chạy game chính (ở thư mục gốc)
+│
+├── assets/                  # Thư mục chứa tài nguyên đồ họa và âm thanh của game
+│   ├── fonts/               # Chứa các tệp font chữ hiển thị (UI/Score)
+│   └── sounds/              # Chứa các tệp hiệu ứng âm thanh, nhạc nền (.mp3, .wav)
+│
+├── build/                   # Thư mục chứa các file sinh ra trong quá trình biên dịch
+│   ├── .cmake/              # Cấu hình hệ thống nội bộ của CMake
+│   ├── CMakeFiles/          # Các tệp trung gian phục vụ quá trình dịch code
+│   ├── cmake_install.cmake  # Kịch bản cài đặt tự động của CMake
+│   ├── CMakeCache.txt       # Bộ nhớ đệm lưu thông tin môi trường build
+│   ├── compile_commands.json# Bản đồ định tuyến hỗ trợ gợi ý code cho IntelliSense
+│   ├── Makefile             # Kịch bản lệnh biên dịch chi tiết của MinGW
+│   └── tetris.exe           # Sản phẩm file chạy game sau khi build thành công
+│
+├── Deadline/                # Thư mục quản lý tiến độ bài tập theo tuần
+│   ├── Tuần 2.md            
+│   └── Tuần 3.md            
+│
+├── include/                 # Thư mục chứa các file Header (.h) định nghĩa lớp
+│   ├── AudioManager.h       # Quản lý phát nhạc nền và hiệu ứng âm thanh
+│   ├── Board.h              # Quản lý ma trận bàn cờ và xử lý va chạm, dọn dòng
+│   ├── GameLoop.h           # Điều phối vòng lặp chính của game (Update, Render, FPS)
+│   ├── InputHandler.h       # Bắt sự kiện và ánh xạ phím bấm đa nền tảng
+│   ├── Renderer.h           # Chịu trách nhiệm vẽ đồ họa, UI lên màn hình
+│   ├── SaveManager.h        # Xử lý luồng đọc/ghi dữ liệu nhị phân để lưu game
+│   ├── ScoreManager.h       # Quản lý tính điểm, cập nhật cấp độ và điểm cao
+│   └── Tetromino.h          # Định nghĩa cấu trúc, màu sắc và xoay khối gạch
+│
+├── saves/                   # Thư mục lưu trữ trạng thái game của người chơi
+│   └── highscore.dat        # File lưu dữ liệu điểm kỷ lục (Binary Format)
+│
+└── src/                     # Thư mục chứa các file Implementation (.cpp) xử lý logic
+    ├── AudioManager.cpp     
+    ├── Board.cpp            
+    ├── GameLoop.cpp         
+    ├── InputHandler.cpp     
+    ├── main.cpp             # Điểm khởi đầu của chương trình (Hàm main)
+    ├── Renderer.cpp         
+    ├── SaveManager.cpp      
+    ├── ScoreManager.cpp     
+    └── Tetromino.cpp
