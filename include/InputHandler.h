@@ -1,8 +1,8 @@
-/*
- * Dinh nghia giao dien doc phim va chuyen thanh hanh dong trong game.
+/**
+ * @class InputHandler
+ * @brief Dinh nghia giao dien doc phim va chuyen thanh hanh dong trong game.
  */
 #pragma once
-
 enum class InputAction {
     None,
     MoveLeft,
@@ -15,8 +15,7 @@ enum class InputAction {
     Restart,
     Quit
 };
-
 class InputHandler {
-public:
+    public:
     InputAction pollAction() const;
 };
