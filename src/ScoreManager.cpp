@@ -23,7 +23,7 @@ void ScoreManager::addClearedLines(int count){
         if (isLastClearTetris_){
             baseScore = static_cast<int>(baseScore * 1.5);
         }
-        isLastClearTetris = true;
+        isLastClearTetris_ = true;
     } else {
         isLastClearTetris_ = false;
     }
@@ -46,5 +46,9 @@ int ScoreManager::getLevel() const { return level_; }
 int ScoreManager::getDisplayLevel() const { return level_ + 1; }
 int ScoreManager::getComboCount() const { return std::max(0, comboCount_); }
 int ScoreManager::getFallDelayMs() const {
-    return std::max(kMinFallDelayMs, kBaseFallDelayMs - level_ * kDelayDecreasePerLevel);
+    int calculatedDelay = kBaseFallDelayMs;
+    for (int i = 0; i < level_; ++i){
+        calculatedDelay = static_cast<int>(calculatedDelay * 0.85);
+    }
+    return std::max(kMinFallDelayMs, calculatedDelay);
 }
