@@ -3,6 +3,7 @@
  */
 
 #include "Board.h"
+#include "Tetromino.h"
 
 #include <algorithm>
 
@@ -84,4 +85,5 @@ void Board::setCell(int x, int y, int value) {
 
 const std::vector<std::vector<int>>& Board::grid() const {
     return grid_;
+}
 
