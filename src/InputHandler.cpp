@@ -45,9 +45,21 @@ InputAction InputHandler::pollAction() const {
         }
     }
 #else
-    const int ch = readCharNonBlocking();
+    int ch = readCharNonBlocking();
     if (ch < 0){
         return InputAction::None;
+    }
+    if (ch == 27){
+        int nextCh1 = readCharNonBlocking();
+        int nextCh2 = readCharNonBlocking();
+        if (nextCh1 == '[' || nextCh1 == 'O'){
+            switch (nextCh2){
+                case 'A': return InputAction::RotateClockwise;
+                case 'D': return InputAction::MoveLeft;
+                case 'C': return InputAction::MoveRight;
+                case 'B': return InputAction::SoftDrop;
+            }
+        }
     }
 #endif
     switch (ch){
@@ -59,7 +71,7 @@ InputAction InputHandler::pollAction() const {
         case ' ': return InputAction::HardDrop;
         case 'p': case 'P': return InputAction::Pause;
         case 'r': case 'R': return InputAction::Restart;
-        case 'q': case 'Q': case 27: return InputAction::Quit;
+        case 'q': case 'Q': return InputAction::Quit;
         default: return InputAction::None;
     }
 }
