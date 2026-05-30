@@ -7,6 +7,7 @@
 
 #include <vector>
 
+ // Khai báo lớp Board: Quản lý ma trận lưới (grid) và cung cấp các phương thức kiểm tra va chạm, dọn dòng
 class Board {
 public:
     static constexpr int Width = 10;
