@@ -9,8 +9,8 @@
 
 class Board {
 public:
-    static constexpr int Width = 8;
-    static constexpr int Height = 16;
+    static constexpr int Width = 15;
+    static constexpr int Height = ;
 
     Board();
 
