@@ -60,7 +60,11 @@ int Board::clearFullLines() {
 
     return cleared;
 }
-
+/*
+ * Hàm truy xuất dữ liệu (Getter) của ma trận:
+ * - Nhận vào tọa độ (x, y) và trả về giá trị ID màu sắc của ô (cell) tương ứng trên bàn chơi.
+ * - Sử dụng hàm isInside() để kiểm tra an toàn. Nếu tọa độ truy xuất nằm ngoài ranh giới ma trận, hàm sẽ trả về -1 để báo lỗi, tránh crash chương trình.
+ */
 int Board::getCell(int x, int y) const {
     if (!isInside(x, y)) {
         return -1;
